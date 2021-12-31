@@ -27,7 +27,7 @@ public class ImageController {
     @GetMapping("/list")
     public List<ImageDTO> findAll() {
         return service.findAll().stream()
-                .map(this::toImageDTO)
+                .map(image -> this.toImageDTO(image))
                 .collect(Collectors.toList());
     }
 
@@ -44,7 +44,7 @@ public class ImageController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping("/image")
+    @PostMapping("/send")
     public String save(
             @RequestParam("file") MultipartFile file,
             @RequestParam String email,

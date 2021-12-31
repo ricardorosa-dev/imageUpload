@@ -29,10 +29,8 @@ public class ImageService {
 
     public Image getImage(String imageId) {
         ObjectId imageObjectId = new ObjectId(imageId);
-        Image image = repository.findById(imageObjectId)
+        return repository.findById(imageObjectId)
                 .orElseThrow(() -> new RuntimeException("Null Image!"));
-
-        return image;
     }
 
     public List<Image> getByPersonId(String personId) {
